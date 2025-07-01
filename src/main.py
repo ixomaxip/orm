@@ -27,3 +27,11 @@ def get_session():
 
 
 SessionDep = Annotated[Session, Depends(get_session)]
+
+
+app = FastAPI()
+
+
+@app.on_event('startup')
+def on_startup():
+    create_db_and_tables()
