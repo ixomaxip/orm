@@ -6,3 +6,7 @@ RUN pip install --upgrade pip
 WORKDIR /srv/reqs
 COPY requirements/basic.txt .
 RUN pip install -r basic.txt
+
+WORKDIR /srv
+
+EXPOSE 80

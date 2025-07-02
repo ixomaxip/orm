@@ -16,9 +16,11 @@ services:
       - WEB_CONCURRENCY=1  # works only without --reload
     logging:
       <<: *logging
+    ports:
+      - 8000:80
     volumes:
       - ./src:/srv
-    command: bash
+    command: fastapi dev main.py --port 80 --host 0.0.0.0 --reload
 
 networks:
   default:
