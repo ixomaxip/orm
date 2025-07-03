@@ -1,3 +1,4 @@
+import os
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, HTTPException, Query
@@ -23,7 +24,7 @@ class HeroUpdate(HeroBase):
     age: int | None = None
     secret_name: str | None = None
 
-sqlite_file_name = 'database.db'
+sqlite_file_name = os.getenv('DB_PATH', 'databese.db')
 sqlite_url = f'sqlite:///{sqlite_file_name}'
 
 connect_args = {'check_same_thread': False}

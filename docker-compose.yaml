@@ -14,12 +14,14 @@ services:
     image: ${REG}/ci/${SRV}:${CI}
     environment:
       - WEB_CONCURRENCY=1  # works only without --reload
+      - DB_PATH=/data/database.db
     logging:
       <<: *logging
     ports:
       - 8000:80
     volumes:
       - ./src:/srv
+      - ./data:/data
     command: fastapi dev main.py --port 80 --host 0.0.0.0 --reload
 
 networks:
